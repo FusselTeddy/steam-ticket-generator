@@ -28,7 +28,7 @@ This project provides an implementation of a encrypted app ticket generator for 
     It will output both the user's SteamID and the generated ticket in base64 format.
 
 4. **Use the generated ticket:**
-    It is possible to use the generated ticket with [gbe_fork](https://github.com/Detanup01/gbe_fork). Use a build from the [actions tab](https://github.com/Detanup01/gbe_fork/actions) since the release still has to be updated.
+    It is possible to use the generated ticket with [gbe_fork](https://github.com/Detanup01/gbe_fork).
     Copy the generated SteamID and ticket to `configs.user.ini` in the `account_steamid` and `ticket` fields respectively.
     ```ini
     [user::general]
