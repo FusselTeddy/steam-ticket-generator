@@ -43,15 +43,25 @@ fn generate_ticket(app_id: u32) -> Result<(), Box<dyn Error>> {
         steamworks_sys::SteamAPI_ISteamUser_RequestEncryptedAppTicket(user, std::ptr::null_mut(), 0);
         
         let pipe = steamworks_sys::SteamAPI_GetHSteamPipe();
-        while run_callbacks(pipe).is_none() {
-            std::thread::sleep(Duration::from_millis(100));
+        loop {
+            match run_callbacks(pipe) {
+                Some(res) => {
+                    if res != steamworks_sys::EResult::k_EResultOK {
+                        return Err(format!("Failed to get encrypted app ticket, error: {:?}", res).into());
+                    }
+                    break;
+                }
+                None => {
+                    std::thread::sleep(Duration::from_millis(100));
+                }
+            }
         }
 
         let ticket = {
             let mut ticket = vec![0; 2028];
             let mut ticket_len = 0;
             let success = steamworks_sys::SteamAPI_ISteamUser_GetEncryptedAppTicket(user, ticket.as_mut_ptr() as *mut _, 2048, &mut ticket_len);
-            
+
             if !success {
                 return Err("Failed to get encrypted app ticket, does the account own the game?".into());
             }
@@ -82,7 +92,7 @@ fn generate_ticket(app_id: u32) -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-fn run_callbacks(pipe: i32) -> Option<u64> {
+fn run_callbacks(pipe: i32) -> Option<steamworks_sys::EResult> {
     unsafe {
         let mut call = None;
 
@@ -104,7 +114,8 @@ fn run_callbacks(pipe: i32) -> Option<u64> {
                     &mut failed
                 ) {
                     if !failed && apicall.m_iCallback == steamworks_sys::EncryptedAppTicketResponse_t_k_iCallback as i32 {
-                        call = Some(apicall.m_hAsyncCall)
+                        let res = &*(apicall_result.as_ptr() as *const steamworks_sys::EncryptedAppTicketResponse_t);
+                        call = Some(res.m_eResult);
                     }
                 }
             }
