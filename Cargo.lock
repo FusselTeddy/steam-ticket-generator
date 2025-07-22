@@ -124,15 +124,15 @@ checksum = "69cdb34c158ceb288df11e18b4bd39de994f6657d83847bdffdbd7f346754b0f"
 
 [[package]]
 name = "rustix"
-version = "1.0.7"
+version = "1.0.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c71e83d6afe7ff64890ec6b71d6a69bb8a610ab78ce364b3352876bb4c801266"
+checksum = "11181fbabf243db407ef8df94a6ce0b2f9a733bd8be4ad02b4eda9602296cac8"
 dependencies = [
  "bitflags",
  "errno",
  "libc",
  "linux-raw-sys",
- "windows-sys 0.59.0",
+ "windows-sys 0.60.2",
 ]
 
 [[package]]
@@ -143,7 +143,7 @@ checksum = "24188a676b6ae68c3b2cb3a01be17fbf7240ce009799bb56d5b1409051e78fde"
 
 [[package]]
 name = "steam-ticket-generator"
-version = "1.1.0"
+version = "1.2.0"
 dependencies = [
  "base64",
  "dialoguer",
@@ -153,7 +153,7 @@ dependencies = [
 [[package]]
 name = "steamworks-sys"
 version = "0.12.0"
-source = "git+https://github.com/Noxime/steamworks-rs#d9ab145702f246019ad59658615547513a9558ee"
+source = "git+https://github.com/Noxime/steamworks-rs#bf8738b4ac640b176e3c5117a87bf82ae7817298"
 
 [[package]]
 name = "syn"
