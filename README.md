@@ -42,6 +42,10 @@ Builds are available in the [releases](https://github.com/denuvosanctuary/steam-
 
 The builds in the releases section will also include the `steam_api64.dll` file required to run the program. Otherwise you can download it from the [Steamworks SDK](https://partner.steamgames.com/doc/sdk). The minimum required version is 1.62.
 
+## Linux
+
+Linux builds are also now available in both [releases](https://github.com/denuvosanctuary/steam-ticket-generator/releases) and [actions](https://github.com/denuvosanctuary/steam-ticket-generator/actions). The required `libsteam_api.so` is already included in the releases.
+
 ## Disclaimer
 
 This project is for educational and research purposes only. Use responsibly and respect software licenses.
