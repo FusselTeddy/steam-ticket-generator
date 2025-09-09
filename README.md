@@ -5,7 +5,7 @@ This project provides an implementation of a encrypted app ticket generator for 
 **Note for Denuvo games:**
  - Denuvo protected games will also require to have the correct steam account id in the steam emulator settings.
  - Each Steam account can achieve at most 5 activations a day.
- - An EncryptedAppTicket expires after 20 minutes and can be used multiple times in that time span, using the same ticket won't bypass the 5 daily activations limit.
+ - An EncryptedAppTicket expires after 30 minutes and can be used multiple times in that time span, using the same ticket won't bypass the 5 daily activations limit.
 
 ## Usage
 
